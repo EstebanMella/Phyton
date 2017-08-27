@@ -1,0 +1,266 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+obci_venta=0
+cant_note=0
+cant_mause=0
+cant_monitor=0
+cant_pendrive=0
+cant_teclado=0
+cant_impresora=0
+total_final=0
+sub_total=0
+iva=0
+opci_n_venta=0
+cont_impre=0
+cont_not=0
+cont_mouse=0
+cont_moni=0
+cont_pend=0
+cont_tec=0
+otro_produc=0
+opci_im_boleta=0
+obci_boleta=0
+impri_boleta=0
+
+def nuevalinea():
+	print" "
+
+while obci_venta!=8:
+	print ""
+	print "1.- Notebook Valor $300.000"
+	print "2.- Mouse Valor $8.000"
+	print "3.- Monitor Valor $40.000"
+	print "4.- Pendrive Valor $10.000"
+	print "5.- Teclado $5.000"
+	print "6.- Impresora $35.000"
+	print "7.- Sacar Subtotal"
+	print "8.- Imprimir Boleta "
+	nuevalinea()
+	obci_venta=input()
+	while obci_venta<1 or obci_venta>8:
+		nuevalinea()
+		print "INGRESE UNA OPCION VALIDA  "
+		nuevalinea()
+		print "1.- Notebook Valor $300.000"
+		print "2.- Mouse Valor $8.000"
+		print "3.- Monitor Valor $40.000"
+		print "4.- Pendrive Valor $10.000"
+		print "5.- Teclado $5.000"
+		print "6.- Impresora $35.000"
+		print "7.- Sacar Subtotal"
+		print "8.- Imprimir Boleta"
+		nuevalinea()
+		obci_venta=input()
+	if obci_venta==1:
+		nuevalinea()
+		print "Ingrese Cantidad de Notebook"
+		nuevalinea()
+		cant_note=input()
+		while cant_note<0:
+			print "Ingrese una Nueva Cantidad "
+			nuevalinea()
+			cant_note=input()
+		sub_total=sub_total+cant_note*300000
+		cont_not=cont_not+cant_note
+	if obci_venta==2:
+		nuevalinea()
+		print "Ingrese Cantidad de Mouse"
+		nuevalinea()
+		cant_mause=input()
+		while cant_mause<0:
+			print "Ingrese una Nueva Cantidad "
+			nuevalinea()
+			cant_mause=input()
+		sub_total=sub_total+cant_mause*8000
+		cont_mouse=cont_mouse+cant_mause
+	if obci_venta==3:
+		nuevalinea()
+		print "Ingrese Cantidad del Monitores"
+		nuevalinea()
+		cant_monitor=input()
+		while cant_monitor<0:
+			print "Ingrese una Nueva Cantidad "
+			nuevalinea()
+			cant_monitor=input()
+		sub_total=sub_total+cant_monitor*40000
+		cont_moni=cont_moni+cant_monitor
+	if obci_venta==4:
+		nuevalinea()
+		print "Ingrese Cantidad de Pendrive"
+		nuevalinea()
+		cant_pendrive=input()
+		while cant_pendrive<0:
+			print "Ingrese una Nueva Cantidad "
+			nuevalinea()
+			cant_pendrive=input()
+		sub_total=sub_total+cant_pendrive*10000
+		cont_pend=cont_pend+cant_pendrive
+	if obci_venta==5:
+		nuevalinea()
+		print "Ingrese Cantidad de Teclados"
+		nuevalinea()
+		cant_teclado=input()
+		while cant_teclado<0:
+			print "Ingrese una Nueva Cantidad "
+			nuevalinea()
+			cant_teclado=input()
+		sub_total=sub_total+cant_teclado*5000
+		cont_tec=cont_tec+cant_teclado
+	if obci_venta==6:
+		nuevalinea()
+		print "Ingrese Cantidad de Impresoras"
+		nuevalinea()
+		cant_impresora=input()
+		while cant_impresora<0:
+			print "Ingrese una Nueva Cantidad "
+			nuevalinea()
+			cant_impresora=input()
+		sub_total=sub_total+cant_impresora*35000
+		cont_impre=cont_impre+cant_impresora
+	nuevalinea()
+	if obci_venta >0 and obci_venta <7:
+		print"Desea Agregar Otro Producto"
+		print"1.-SI"
+		print"2.-NO"
+		nuevalinea()
+		opci_n_venta=input()
+		while opci_n_venta<1 or opci_n_venta>2:
+			nuevalinea()
+			print"Ingrese Una Opcion Correcta"
+			nuevalinea()
+			print"Desea Agregar Otro Producto"
+			print"1.-SI"
+			print"2.-NO"
+			nuevalinea()
+			opci_n_venta=input()
+		if opci_n_venta==1:
+			obci_venta=0
+		if opci_n_venta==2:
+			obci_venta=7
+	
+	
+	if obci_venta==7:#sacael sub total y pregunta si deseas imprimir la boleta
+		if sub_total < 1:
+			print "No Tiene Productor Ingresados"
+			print "No Se Puede Imprimir Sub Total"
+			obci_venta= 9
+			nuevalinea()
+		else:
+			iva=sub_total*0.19
+			total_final=sub_total+iva
+			nuevalinea()
+			print"El SubTotal    Es :$",sub_total
+			print"IVA            Es :$",int(iva)
+			print"El Total Venta Es :$",int(total_final)
+			nuevalinea()
+			print"1.- Desea Imprimir boleta "
+			print"2.- Desea Agregar Otro Producto"
+			nuevalinea()
+			opci_im_boleta=input()
+			while opci_im_boleta <1 or opci_im_boleta >2:
+				print"Ingrese Una Opcion Correcta"
+				nuevalinea()
+				print"1.- Desea Imprimir boleta "
+				print"2.- Desea Agregar Otro Producto"
+				opci_im_boleta=input()
+			if opci_im_boleta==1:
+				impri_boleta=8
+			if opci_im_boleta==2:
+				obci_venta=0
+	if obci_venta==8:#confirma si quieres imprimir la boleta
+		print"Desea Imprimir la boleta"
+		print"1.-SI"
+		print"2.-NO"
+		nuevalinea()
+		obci_boleta=input()
+		nuevalinea()
+		while obci_boleta<1 or obci_boleta>2:
+			nuevalinea()
+			print"Ingrese Una Opcion Correcta"
+			nuevalinea()
+			print"Desea Imprimir la boleta"
+			print"1.-SI"
+			print"2.-NO"
+			nuevalinea()
+			obci_boleta=input()
+	if obci_boleta==1 or impri_boleta==8:#imprime la boleta si se pidepor la obcion de imprimir o despues de sacar el sub total
+		if sub_total < 1:
+			print "No Tiene Productor Ingresados"
+			print "No Se Puede Imprimir Boleta"
+			obci_venta= 9
+			nuevalinea()
+		else:
+			iva=sub_total*0.19
+			total_final=sub_total+iva
+			nuevalinea()
+			print"DISTRIBUIDORA TECGEO S.A."
+			print"C.M.:SANTA ROSA 2344 SAN JOAQUIN, SANTIAGO"
+			print"RUT Nro.: 85.234.980-2"
+			print"GIRO:VENTA DE PRODUCTOS TECNOLOGICOS "
+			print"BOLETA AUTORIZADA POR EL SII"
+			print"Nro. CAJA: 001         Nro. BOLETA: 000345"
+			nuevalinea()
+			nuevalinea()
+			if cant_note>0: 
+				print "LA CANTIDAD DE NOTEBOOK   ES :",cont_not , "VALOR UNITARIO  $ 300.000"
+			if cant_mause>0:
+				print "LA CANTIDAD DE MOUSE      ES :",cont_mouse,"VALOR UNITARIO  $ 8.000"
+			if cant_monitor>0:
+				print "LA CANTIDAD DE MONITORES  ES :",cont_moni ,"VALOR UNITARIO  $ 40.000"
+			if cant_pendrive>0:
+				print "LA CANTIDAD DE PENDRIVE   ES :",cont_pend ,"VALOR UNITARIO  $ 10.000"
+			if cant_teclado>0:
+				print "LA CANTIDAD DE TECLADOS   ES :",cont_tec  ,"VALOR UNITARIO  $ 5.000"
+			if cant_impresora>0:
+				print "LA CANTIDAD DE IMPRESORAS ES :",cont_impre,"VALOR UNITARIO  $ 35.000"
+			print "-------------------------------------------------------------"
+			print "-------------------------------------------------------------"
+			print "                                 EL SUBTOTAL ES  $",sub_total
+			print "                                 IVA             $",int(iva)
+			print "                                 TOTAL VENTA     $",int(total_final)
+			
+		if obci_boleta==2:
+				obci_venta=0
+		print"Desea Ingresar Una Nueva Venta"
+		print"1.-SI"
+		print"2.-NO"
+		nuevalinea()
+		nueva=input()
+		while nueva<1 or nueva>2:
+			print"Ingrese Una Opcion Correcta"
+			nuevalinea()
+			print"Desea Ingresar Una Nueva Venta"
+			print"1.-SI"
+			print"2.-NO"
+			nuevalinea()
+			nueva=input()	
+		if nueva==1:#limpia variables y reinicia la boleta
+			obci_venta=9
+			obci_venta=0
+			cant_note=0
+			cant_mause=0
+			cant_monitor=0
+			cant_pendrive=0
+			cant_teclado=0
+			cant_impresora=0
+			total_final=0
+			sub_total=0
+			iva=0
+			opci_n_venta=0
+			cont_impre=0
+			cont_not=0
+			cont_mouse=0
+			cont_moni=0
+			cont_pend=0
+			cont_tec=0
+			otro_produc=0
+			opci_im_boleta=0
+			obci_boleta=0
+			impri_boleta=0
+		else:
+			break
+	  
+		
+
+
